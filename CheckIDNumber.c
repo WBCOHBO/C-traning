@@ -1,17 +1,28 @@
 #include <stdio.h>
 
 int main(){
-    // int A = 10, B = 11, C = 12, D = 13, E = 14, F = 15, G = 16, H = 17,
-    // I = 34, J = 18, K = 19, L = 20, M = 21, N = 22, O = 35, P = 23,
-    // Q = 24, R = 25, S = 26, T = 27, U = 28, V = 29, W = 32, X = 30,
-    // Y = 31, Z = 33;
-    int Sum;
+    int Sum,i;
     char IDNumber[10] ;
+    char En[26] ={'A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','X','Y','W','Z','I','O'};
+    char Num[26]={10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35};
 
-    printf("Enter your ID number :");
     scanf("%s",&IDNumber);
+    for(i=0;i<=25;i++){
+        if(IDNumber[0]==En[i]){
+            IDNumber[0]=Num[i];
+            break;
+        }
+    }
     Sum = (IDNumber[0]/10) + (IDNumber[0]%10)*9;
-    printf("Sum = %d",Sum);
+    for(i=1;i<9;i++){
+        Sum=Sum+(IDNumber[i]-'0')*(9-i);
+    }
+    Sum=Sum+IDNumber[9]-'0';
+    if(Sum%10==0){
+        printf("real");
+    }else{
+        printf("fake");
+    }
 
     return 0;
 }
